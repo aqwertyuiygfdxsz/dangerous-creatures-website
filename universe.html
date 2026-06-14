@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Опасные Создания — Вселенная</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,9 +56,9 @@
   /* ---------- NAV ---------- */
   .nav {
     position: fixed; top: 0; left: 0; right: 0;
-    height: var(--nav-h); z-index: 120;
+    height: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); box-sizing: border-box; z-index: 120;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 clamp(20px, 4vw, 56px);
+    padding: env(safe-area-inset-top, 0px) clamp(20px, 4vw, 56px) 0;
     background: linear-gradient(180deg, rgba(7,6,10,0.95) 0%, rgba(7,6,10,0.78) 100%);
     backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
@@ -109,7 +109,7 @@
   .u-hero {
     position: relative; min-height: 100vh;
     display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
-    text-align: center; padding: calc(var(--nav-h) + 4vh) 24px 8vh;
+    text-align: center; padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 4vh) 24px 8vh;
     background: url('assets/fire_2.jpeg') center 22% / cover no-repeat; overflow: hidden;
   }
   .u-hero::after {
@@ -340,6 +340,18 @@
   .u-map-cap { text-align: center; margin-top: 18px; font-family: 'Manrope', sans-serif;
     font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--pearl-mute); }
 
+  /* Three-houses emblem plate (shown before the Reapers section) */
+  .u-emblems-band { background: var(--obsidian); padding: clamp(28px, 6vw, 76px) clamp(16px, 4vw, 40px) clamp(6px, 1.5vw, 16px); }
+  .u-emblems { position: relative; max-width: 1120px; margin: 0 auto; }
+  .u-emblems::before {
+    content: ""; position: absolute; left: 0; right: 0; top: 0;
+    height: clamp(48px, 9%, 110px);
+    background: linear-gradient(to bottom, var(--obsidian) 0%, rgba(7,6,10,0.85) 22%, rgba(7,6,10,0) 100%);
+    border-radius: 8px 8px 0 0;
+    pointer-events: none;
+  }
+  .u-emblems img { width: 100%; height: auto; display: block; border-radius: 8px; }
+
   /* two cards */
   .u-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 3vw, 34px); }
   .u-card {
@@ -356,6 +368,63 @@
   .u-list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; background: var(--gold-soft); transform: rotate(45deg); }
   .u-list li b { color: var(--pearl); font-weight: 500; }
 
+  /* heraldic house list — used inside the South/North continent cards */
+  .u-houses { list-style: none; margin-top: 6px; display: flex; flex-direction: column; }
+  .u-house { padding: 13px 0; border-top: 1px solid var(--line); }
+  .u-houses .u-house:first-child { border-top: 0; padding-top: 2px; }
+  .u-house-top { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 12px; }
+  .u-house-name {
+    font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(14.5px, 1.5vw, 17px);
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+  }
+  .u-house-seat {
+    font-family: 'Manrope', sans-serif; font-weight: 400; font-size: 11px;
+    letter-spacing: 0.13em; text-transform: uppercase; color: var(--pearl-mute);
+  }
+  .u-house-motto {
+    display: block; margin-top: 5px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: clamp(15px, 1.5vw, 17.5px); line-height: 1.42; color: var(--pearl-dim); text-wrap: pretty;
+  }
+  .u-card-sub {
+    font-family: 'Cinzel', serif; font-weight: 500; font-size: clamp(11px, 1.2vw, 13px);
+    letter-spacing: 0.26em; text-transform: uppercase; color: var(--gold-soft);
+    margin-top: 26px; margin-bottom: 6px; display: flex; align-items: center; gap: 12px;
+  }
+  .u-card-sub::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--line-strong), transparent); }
+
+  /* Lords of the North — a roster table of holders and their lands */
+  .u-roster { margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; column-gap: clamp(16px, 2.4vw, 30px); }
+  .u-roster-row {
+    display: flex; flex-direction: column; gap: 2px;
+    padding: 9px 2px; border-top: 1px solid var(--line);
+  }
+  .u-roster-name {
+    font-family: 'Manrope', sans-serif; font-weight: 400;
+    font-size: clamp(13px, 1.3vw, 14.5px); letter-spacing: 0.01em; color: var(--pearl-dim);
+  }
+  .u-roster-land {
+    font-family: 'Cinzel', serif; font-weight: 500;
+    font-size: clamp(10px, 1vw, 11.5px); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-soft);
+  }
+  @media (max-width: 720px) { .u-roster { grid-template-columns: 1fr; } }
+
+  /* East — a region only hinted at so far */
+  .u-east {
+    position: relative; margin-top: clamp(18px, 3vw, 34px);
+    padding: clamp(26px, 3vw, 40px);
+    background: linear-gradient(180deg, rgba(16,13,20,0.6) 0%, rgba(12,10,15,0.7) 100%);
+    border: 1px dashed var(--line-strong); border-radius: 4px;
+  }
+  .u-east-head { display: flex; align-items: baseline; flex-wrap: wrap; gap: 10px 18px; margin-bottom: 12px; }
+  .u-east .u-card-label { margin-bottom: 0; }
+  .u-east-tag {
+    font-family: 'Manrope', sans-serif; font-weight: 500; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-soft);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; white-space: nowrap;
+  }
+  .u-east .u-text { max-width: 46em; }
+
   /* orochit atmospheric block */
   .u-orochit {
     position: relative; margin-top: clamp(20px, 3vw, 30px);
@@ -363,7 +432,7 @@
     border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
     background:
       linear-gradient(180deg, rgba(7,6,10,0.74) 0%, rgba(7,6,10,0.9) 100%),
-      url('assets/crypt1.jpeg') center / cover no-repeat;
+      url('assets/terrace_orochit.jpeg') center / cover no-repeat;
   }
   .u-orochit .u-prose { position: relative; }
   .u-orochit .u-text { color: var(--pearl); }
@@ -648,9 +717,62 @@
 
   /* «Раздел I–IV» не нужны */
   .u-kicker { display: none; }
+
+  /* Юг / Север — равная высота на десктопе, без «дыры» */
+  #continentSplit { align-items: stretch; }
+  #continentSplit .u-card { display: flex; flex-direction: column; }
+  #continentSplit .u-houses { flex: 1; justify-content: space-between; }
+  #continentSplit .u-roster { flex: 1; align-content: space-between; }
+  @media (max-width: 620px) {
+    #continentSplit .u-houses { justify-content: flex-start; }
+    #continentSplit .u-roster { align-content: start; }
+  }
+</style>
+<style id="__lang-hidden-temp">
+  /* RU/EN switch hidden until translation is ready — remove this block to restore. */
+  .lang { display: none !important; }
+</style>
+<style id="__page-loader">
+  /* Loading screen — black background + logo, fades out once the page is ready. */
+  .page-loader {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    background: #000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  .page-loader-logo {
+    width: 75px; height: auto;
+    filter: drop-shadow(0 0 26px rgba(197,165,90,0.4));
+    animation: pageLoaderPulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pageLoaderPulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.03); }
+  }
+  .page-loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .page-loader-logo { animation: none; opacity: 1; }
+  }
 </style>
 </head>
 <body>
+<div id="pageLoader" class="page-loader" aria-hidden="true">
+  <img class="page-loader-logo" src="assets/logo_small.png" alt="" width="75" height="75" />
+</div>
+<script>
+  (function () {
+    var loader = document.getElementById('pageLoader');
+    if (!loader) return;
+    var done = false;
+    function finish() {
+      if (done) return; done = true;
+      loader.classList.add('is-hidden');
+      setTimeout(function () { if (loader && loader.parentNode) loader.style.display = 'none'; }, 700);
+    }
+    window.addEventListener('load', function () { setTimeout(finish, 300); });
+    setTimeout(finish, 6000); /* safety fallback */
+  })();
+</script>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav" id="nav">
@@ -705,6 +827,10 @@
       <p class="u-head-sub" data-i18n="u.cha.sub">Люди, чьи судьбы переплелись на страницах истории.</p>
     </div>
     <div class="u-factions reveal" id="factionsRoot"></div>
+    <!-- Гербы трёх домов (перед финальным слоганом) -->
+    <figure class="u-emblems reveal" style="margin: clamp(40px, 5.5vw, 70px) auto clamp(6px, 1.5vw, 16px);">
+      <img src="assets/houses_sigils.jpg" alt="Гербы домов: Ловарра — Дом Феникса, Торнхолл — Дом Бражника, Цитадель — Защитники границ" loading="lazy" />
+    </figure>
     <div class="u-chars-tagline reveal">
       <div class="ornament" aria-hidden="true"><span class="rule"></span><span class="diamond"></span><span class="rule right"></span></div>
       <p data-i18n-html="u.cha.tagline">Каждый из них уже сделал свой выбор.<br>Осталось узнать, кто переживёт его последствия.</p>
@@ -730,15 +856,72 @@
     <div class="u-prose reveal">
       <p class="u-lead" data-i18n="u.world.continent.lead">Земля, разделённая надвое временем и кровью. Юг и Север заселялись в разное время и разными народами&nbsp;— и оттого живут по-разному до сих пор.</p>
     </div>
-    <div class="u-split reveal" style="margin-top: clamp(34px,4vw,48px);">
+    <div class="u-split reveal" id="continentSplit" style="margin-top: clamp(34px,4vw,48px);">
       <div class="u-card">
         <div class="u-card-label" data-i18n="u.world.south.label">Юг</div>
         <p class="u-text" data-i18n="u.world.south.text">Заселён около двух тысяч лет назад — переселенцами с Востока. Это древние дома, выросшие из старых корней: старые песни, старая вера, многовековые династии.</p>
+        <div class="u-card-sub" data-i18n="u.world.south.houses.h">Древние дома</div>
+        <ul class="u-houses">
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Феникс</span><span class="u-house-seat">Ловарра · Король Ривальд II</span></div>
+            <span class="u-house-motto">Кровь бога весеннего солнца. Древнейший дом Юга.</span>
+          </li>
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Ранн</span></div>
+            <span class="u-house-motto">«Мы добываем свет.»</span>
+          </li>
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Абодарре</span></div>
+            <span class="u-house-motto">«Плуги Юга.»</span>
+          </li>
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Стелл</span></div>
+            <span class="u-house-motto">«Звёзды не лгут.»</span>
+          </li>
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Нелль</span></div>
+            <span class="u-house-motto">«Лес слушает тех, кто знает старые песни.»</span>
+          </li>
+          <li class="u-house">
+            <div class="u-house-top"><span class="u-house-name">Луканн</span></div>
+            <span class="u-house-motto">«Последний заслон.»</span>
+          </li>
+        </ul>
       </div>
       <div class="u-card">
         <div class="u-card-label" data-i18n="u.world.north.label">Север</div>
         <p class="u-text" data-i18n="u.world.north.text">Дикие земли, захваченные четыреста лет назад переселенцами с юга. Земли были поделены между 20 Державцами, но подчиняются единой короне.</p>
+        <div class="u-card-sub" data-i18n="u.world.north.lords.h">Державцы Северных Земель</div>
+        <div class="u-roster">
+          <div class="u-roster-row"><span class="u-roster-name">Лоран Морель</span><span class="u-roster-land">Торнхолл и Рокхельм</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Эдрик Гарварин</span><span class="u-roster-land">Драггмор</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Свейн Оверин</span><span class="u-roster-land">Золор</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Маркус Торн</span><span class="u-roster-land">Окул</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Эннис Валионсис</span><span class="u-roster-land">Аквилон</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Сигурд Морт</span><span class="u-roster-land">Мортгар</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Адриан Бойрен</span><span class="u-roster-land">Скадор</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Хельга Сорн</span><span class="u-roster-land">Римар</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Олаф Хелиос</span><span class="u-roster-land">Виталас</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Юлиус Фенрис</span><span class="u-roster-land">Стигар</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Бруно Вельтор</span><span class="u-roster-land">Арктур</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Кнут Аркас</span><span class="u-roster-land">Урсус</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Магнус Беар</span><span class="u-roster-land">Гелиос</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Лукас Сол</span><span class="u-roster-land">Эгир</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Харальд Марин</span><span class="u-roster-land">Кастор</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Феликс Каструм</span><span class="u-roster-land">Вельтор</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Разнар Альтос</span><span class="u-roster-land">Нордхейм</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Нивар Дейзим</span><span class="u-roster-land">Ривен</span></div>
+          <div class="u-roster-row"><span class="u-roster-name">Гектор Ритус</span><span class="u-roster-land">Скальтор</span></div>
+        </div>
       </div>
+    </div>
+
+    <div class="u-east reveal">
+      <div class="u-east-head">
+        <div class="u-card-label" data-i18n="u.world.east.label">Восток</div>
+        <span class="u-east-tag" data-i18n="u.world.east.tag">Первое упоминание · Глава 11</span>
+      </div>
+      <p class="u-text" data-i18n="u.world.east.text">Древние города и вольные земли. Колыбель южных домов, откуда две тысячи лет назад пришли первые переселенцы. Земли, что не склонились ни перед короной Юга, ни перед короной Севера.</p>
     </div>
 
     <figure class="u-map reveal">
@@ -758,7 +941,7 @@
       <div class="u-card">
         <div class="u-card-label" data-i18n="u.world.nav.label">Навь</div>
         <p class="u-text" data-i18n="u.world.nav.text">Мир за гранью Яви — со своими законами и существами.</p>
-        <div class="u-card-label" style="font-size:clamp(15px,1.6vw,18px); margin-top:26px; margin-bottom:8px; color:var(--gold-soft);" data-i18n="u.world.nav.subh">Гости из Нави</div>
+        <div class="u-card-label" style="font-size:clamp(15px,1.6vw,18px); margin-top:26px; margin-bottom:8px; color:var(--gold-soft);" data-i18n="u.world.nav.subh">Навьи Твари</div>
         <p class="u-text" data-i18n="u.world.nav.guests">Трескуны, костоглоты, болотники — существа, попавшие в Явь через червоточины с верхнего слоя Нави.</p>
       </div>
     </div>
@@ -791,9 +974,9 @@
     <div class="u-prose">
       <p class="u-lead reveal" data-i18n="u.rea.lead">Переплавленные люди с навьей кровью — оружие против нечисти.</p>
       <p class="u-text reveal" style="margin-top:1.6em;" data-i18n-html="u.rea.p1">В основе жнеца — <b>ихтор</b>, чёрная кровь: стабилизированная навья кровь, которую вливают человеку при переплавке. Ихтор гуще человеческой крови, и оттого сердце жнеца бьётся медленно и редко. Эта же кровь даёт силу и выносливость, недоступную обычным людям, ускоренную регенерацию ран и притупляет тело: жнецы не чувствуют ни боли, ни холода.</p>
-      <p class="u-text reveal" data-i18n-html="u.rea.p2">Но запас их силы конечен, у каждого жнеца есть <b>«Резерв»</b> — порог лимита, удерживаемый сумрачным зельем, со временем истончается и может быть превышен в бою.</p>
+      <p class="u-text reveal" data-i18n-html="u.rea.p2">Запас сил жнецов конечен и ограничен <b>«Резервом»</b> — концентрацией навьей крови, стабильность которой поддерживается сумрачным зельем. Эта пропорция нестабильна: чёрная кровь стремится подчинить себе остатки красной. Если в пылу сражения этот критический лимит превышается, запускается необратимая реакция. Разум жнеца сгорает в Нави, а его тело превращается в пустую, хищную оболочку.</p>
     </div>
-    <blockquote class="u-pull reveal" data-i18n-html="u.rea.pull">Положение жнецов в обществе — положение вещей, а не людей. В отчётных списках они числятся как <b>«имущество цитадели»</b>.</blockquote>
+    <blockquote class="u-pull reveal" data-i18n-html="u.rea.pull">Положение жнецов в обществе — в отчётных списках они числятся как <b>«имущество цитадели»</b> над конями и костоглотами.</blockquote>
     <div class="u-ref-wrap reveal"><span class="u-ref" data-i18n="u.rea.ref">Первое упоминание — глава 1</span></div>
 
     <div class="u-sub reveal" style="max-width:920px; margin-left:auto; margin-right:auto;"><span class="u-sub-num">3.1</span><span class="u-sub-h" data-i18n="u.whi.h">Свистки-манилки</span></div>
