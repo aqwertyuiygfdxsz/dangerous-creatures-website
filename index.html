@@ -599,6 +599,10 @@
     opacity: 0.7;
   }
 
+  .tags-line{margin:36px auto 0;max-width:760px;font-family:'Manrope',sans-serif;font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--pearl-dim);text-align:center;line-height:2}
+  .series-inline{margin:clamp(48px,6vw,72px) 0 clamp(20px,3vw,32px);width:100vw;position:relative;left:50%;transform:translateX(-50%)}
+  .series-inline .section-head{margin-bottom:clamp(28px,3.6vw,40px)}
+
   /* Global primary button */
   .btn-primary {
     color: var(--obsidian);
@@ -937,6 +941,7 @@
     .page-loader-logo { animation: none; opacity: 1; }
   }
 </style>
+<link rel="stylesheet" href="home-sections.css" />
 </head>
 <body>
 <div id="pageLoader" class="page-loader" aria-hidden="true">
@@ -1001,7 +1006,7 @@
         </div>
       </div>
       <div class="hero-cta">
-        <a href="#story" class="btn hero-cta-text" data-i18n="hero.cta">Читать главу</a>
+        <a href="#story" class="btn hero-cta-text" data-i18n="hero.cta">Пролог</a>
         <a href="#story" class="hero-cta-arrow" aria-label="Прокрутить вниз">↓</a>
       </div>
     </div>
@@ -1026,21 +1031,25 @@
       В столице северного королевства Торнхолл умирает король, и на престол восходит его сын Лоран. Чтобы скрепить союз двух домов, в замок прибывает принцесса Рэй. Но вместо мира она приносит с собой войну. Свадебным подарком принцессе становится отрубленная голова её брата. А пока смертные короли делят власть&nbsp;— из-под корней мира поднимается Навь. У неё нет союзников. Нет пощады. И нет дела до чужих корон.
     </p>
 
-    <div class="tags" id="tags">
-      <span>Slow burn</span>
-      <span>Dark fantasy</span>
-      <span>Found family</span>
-      <span>Blood magic</span>
-      <span>Forbidden love</span>
-      <span>Morally grey</span>
+    <p class="tags-line">SLOW BURN · DARK FANTASY · SLAVIC MYTHOLOGY · MONSTER HUNTERS · FORBIDDEN LOVE · MORALLY GREY</p>
+
+    <div class="series-inline" id="series" data-screen-label="chapters">
+      <div class="section-head">
+        <h2 class="section-title">Главы</h2>
+        <p class="section-sub">На свадебном пиру принцессе дарят голову её брата.</p>
+      </div>
+      <div class="rail-wrap">
+        <div class="rail" id="seriesRail"></div>
+      </div>
     </div>
 
     <div class="cta-row">
-      <a href="read.html" class="btn btn-primary" data-i18n="cta.read">Читать Главу 1</a>
+      <a href="read.html" class="btn btn-primary" data-i18n="cta.read">Онлайн книга</a>
       <a href="universe.html" class="btn btn-ghost" data-i18n="nav.world">Вселенная</a>
     </div>
   </div>
 </section>
+
 
 <!-- ===================== PRE-ORDER ===================== -->
 <section class="preorder-section" id="preorder">
@@ -1201,11 +1210,11 @@
       'nav.read': 'Читать',
       'nav.world': 'Вселенная',
       'hero.tagline': 'Есть только те, кто охотится, и те, кто станет добычей.',
-      'hero.cta': 'Читать главу',
+      'hero.cta': 'Пролог',
       'hero.scroll': 'войдите',
       'story.eyebrow': 'Пролог',
       'story.body': 'В столице северного королевства Торнхолл умирает король, и на престол восходит его сын Лоран. Чтобы скрепить союз двух домов, в замок прибывает принцесса Рэй. Но вместо мира она приносит с собой войну. Свадебным подарком принцессе становится отрубленная голова её брата. А пока смертные короли делят власть&nbsp;— из-под корней мира поднимается Навь. У неё нет союзников. Нет пощады. И нет дела до чужих корон.',
-      'cta.read': 'Читать Главу 1',
+      'cta.read': 'Онлайн книга',
       'preorder.title': 'Хотите приобрести<br>печатную книгу?',
       'preorder.sub': 'Оставьте email&nbsp;— и&nbsp;вы первыми узнаете о&nbsp;выходе коллекционного издания.',
       'preorder.cta': 'Записаться',
@@ -1217,11 +1226,11 @@
       'nav.read': 'Read',
       'nav.world': 'Universe',
       'hero.tagline': 'There are only those who hunt, and those who become prey.',
-      'hero.cta': 'Read Chapter',
+      'hero.cta': 'Prologue',
       'hero.scroll': 'enter',
       'story.eyebrow': 'Prologue',
       'story.body': 'In the capital of the northern kingdom of Thornhall, the old king is dying — and his son Loran rises to the throne. To seal an alliance of two houses, Princess Rey arrives at the castle. But instead of peace, she brings war with her. Her wedding gift is the severed head of her brother. And while mortal kings divide power among themselves, from beneath the roots of the world rises Nav — she has no allies, no mercy, and no concern for the crowns of others.',
-      'cta.read': 'Read Chapter 1',
+      'cta.read': 'Online book',
       'preorder.title': 'Want a printed copy<br>of the book?',
       'preorder.sub': 'Leave your email&nbsp;— and be the first to&nbsp;hear about the collector&rsquo;s edition.',
       'preorder.cta': 'Sign up',
@@ -1284,5 +1293,7 @@
   } catch(e){}
 </script>
 
+<script src="home-sections.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
