@@ -357,8 +357,8 @@
   /* =================== LAYOUT ==================== */
   .shell {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: clamp(20px, 2vw, 36px);
+    grid-template-columns: 320px 1fr;
+    gap: clamp(24px, 2.4vw, 40px);
     padding: calc(var(--nav-h) + env(safe-area-inset-top, 0px) + 24px) clamp(16px, 3vw, 40px) 80px;
     max-width: 1400px;
     width: 100%;
@@ -384,18 +384,17 @@
     align-self: start;
     max-height: calc(100vh - var(--nav-h) - env(safe-area-inset-top, 0px) - 32px);
     overflow: hidden;
-    background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
-    border: 1px solid var(--line);
-    border-radius: 4px;
+    border-right: 1px solid var(--line);
+    padding-right: clamp(20px, 2vw, 34px);
     display: flex;
     flex-direction: column;
   }
   .toc-head {
-    padding: 18px 22px 14px;
+    padding: 4px 0 14px;
     border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
   }
   .toc-head h2 {
     font-family: 'Cinzel', serif;
@@ -418,11 +417,11 @@
   .toc-list {
     list-style: none;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 14px;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 14px;
+    padding: 14px 2px 14px 0;
     scrollbar-width: thin;
     scrollbar-color: var(--gold-deep) transparent;
   }
@@ -468,6 +467,7 @@
     aspect-ratio: 9 / 16;
     border-radius: 4px;
     overflow: hidden;
+    position: relative;
     background: var(--ink);
     border: 1px solid var(--line);
     transition: border-color 0.3s ease, box-shadow 0.4s ease;
@@ -492,6 +492,16 @@
   .toc-lock {
     width: 26px; height: 26px;
     color: var(--pearl-mute);
+  }
+  /* Locked chapter WITH cover art — dim the image and stamp a "Скоро" badge */
+  .toc-cover.is-soon img { opacity: 0.5; filter: grayscale(0.2); }
+  .toc-soon {
+    position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%);
+    font-family: 'Manrope', sans-serif; font-size: clamp(16px, 1.8vw, 21px); font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--pearl); padding: 12px 26px; white-space: nowrap; text-align: center;
+    background: rgba(8,6,8,0.55); border: 1px solid rgba(197,165,90,0.55); border-radius: 2px;
+    backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
   }
 
   /* Typographic cover — for unlocked chapters that don't yet have cover art.
@@ -574,9 +584,6 @@
   }
 
   .reader {
-    background: linear-gradient(180deg, var(--panel) 0%, var(--obsidian) 100%);
-    border: 1px solid var(--line);
-    border-radius: 4px;
     padding: clamp(28px, 4vw, 64px) clamp(20px, 4vw, 72px) clamp(40px, 5vw, 80px);
     min-height: 80vh;
     position: relative;
@@ -820,6 +827,8 @@
     .toc-head {
       cursor: pointer;
       user-select: none;
+      justify-content: space-between;
+      padding-left: 4px;
     }
     .toc {
       position: static;
@@ -830,11 +839,12 @@
       border-radius: 0;
       border-left: none;
       border-right: none;
+      padding-right: 0;
     }
     .toc-head .toc-toggle { display: inline-flex; }
     .toc-list {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 12px;
       padding: 12px;
       max-height: none;
@@ -1536,10 +1546,10 @@
     { id: 1, num: '01', ruTitle: 'Погребальный\nЗвон', enTitle: 'The Death Knell', cover: 'assets/cov_1.png', file: 'content/ch1.txt' },
     { id: 2, num: '02', ruTitle: 'Лунный Цвет',        enTitle: 'Moon Flower',        cover: 'assets/cov_2.png', file: 'content/ch2.txt' },
     { id: 3, num: '03', ruTitle: 'Пепел Обещаний',     enTitle: 'Ashes of Promises', cover: 'assets/cov_3.png', file: 'content/ch3.txt' },
-    { id: 4, num: '04', ruTitle: 'Шепчущий Лес',        enTitle: 'Whispering Forest', cover: 'assets/cov_4.png', file: 'content/ch4.txt' },
+    { id: 4, num: '04', ruTitle: 'Тропа Мертвецов',     enTitle: 'Path of the Dead', cover: 'assets/cov_4.png', file: 'content/ch4.txt' },
     { id: 5, num: '05', ruTitle: 'Эхо\nВоспоминаний',     enTitle: 'Echo of Memories',   cover: 'assets/cov_5.png', file: 'content/ch5.txt' },
     { id: 6, num: '06', ruTitle: 'Скованные Навью',       enTitle: 'Bound by the Nav',   cover: 'assets/cov_6.png', file: 'content/ch6.txt' },
-    { id: 7, num: '07', ruTitle: 'Скоро',  enTitle: 'Coming soon', locked: true },
+    { id: 7, num: '07', ruTitle: 'Скоро',  enTitle: 'Coming soon', locked: true, cover: 'assets/cov_7.png' },
   ];
 
   const I18N = {
@@ -1660,7 +1670,9 @@
 
       const title = state.lang === 'en' ? ch.enTitle : ch.ruTitle;
       let coverHtml;
-      if (ch.locked) {
+      if (ch.locked && ch.cover) {
+        coverHtml = `<div class="toc-cover is-soon"><img src="${ch.cover}" alt="" loading="lazy" /><span class="toc-soon">${I18N[state.lang].lockedTitle}</span></div>`;
+      } else if (ch.locked) {
         coverHtml = `<div class="toc-cover is-placeholder"><svg class="toc-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke-linecap="round"/></svg></div>`;
       } else if (ch.cover) {
         coverHtml = `<div class="toc-cover"><img src="${ch.cover}" alt="" loading="lazy" /></div>`;
