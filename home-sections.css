@@ -6,8 +6,6 @@ a:hover{color:var(--gold-soft)}
 .section-head{max-width:840px;margin:0 auto clamp(36px,5vw,56px);padding:0 24px;text-align:center}
 .section-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(24px,3.2vw,42px);line-height:1.1;letter-spacing:0.18em;text-transform:uppercase;color:var(--ochre);margin-bottom:14px}
 .section-sub{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;font-size:clamp(20px,2.6vw,30px);color:var(--pearl-dim)}
-.section-sub::before{content:"\201C";color:var(--gold);opacity:0.7;margin-right:2px}
-.section-sub::after{content:"\201D";color:var(--gold);opacity:0.7;margin-left:2px}
 
 /* ============ SERIES + LOOKS shared: rails & cards ============ */
 .rail-wrap{padding:0 clamp(20px,4vw,56px)}
@@ -24,7 +22,9 @@ a:hover{color:var(--gold-soft)}
 .ch-trailers{position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:8px;padding:14px;background:linear-gradient(180deg,rgba(9,9,8,0) 0%,rgba(9,9,8,0.55) 48%,rgba(9,9,8,0.9) 100%);opacity:0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease;pointer-events:none}
 .card[data-kind="series"]:hover .ch-trailers{opacity:1;transform:none;pointer-events:auto}
 .ch-trailer{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(255,255,255,0.28);border-radius:3px;background:rgba(255,255,255,0.09);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:var(--pearl);font-family:'Manrope',sans-serif;font-size:12px;font-weight:500;letter-spacing:0.02em;text-decoration:none;transition:background .25s ease,border-color .25s ease}
-.ch-trailer:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.55)}
+.ch-trailer:hover{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.55);color:var(--pearl)}
+.ch-trailer-read{border-color:var(--gold);background:rgba(197,165,90,0.16);color:var(--gold)}
+.ch-trailer-read:hover{background:var(--gold);color:var(--obsidian);border-color:var(--gold)}
 .ch-trailer .ig-ic{width:17px;height:17px;flex-shrink:0}
 .ch-trailer span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .card[data-kind="series"]:hover .ch-cover img,.card[data-kind="cast"]:hover .ch-cover img{transform:scale(1.05)}
@@ -32,6 +32,9 @@ a:hover{color:var(--gold-soft)}
 .ch-num{display:block;font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
 .ch-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(22px,2vw,27px);line-height:1.1;letter-spacing:0.01em;color:var(--pearl);margin-bottom:6px}
 .ch-desc{font-family:'Manrope',sans-serif;font-weight:300;font-size:13px;letter-spacing:0.02em;color:var(--pearl-dim);text-wrap:pretty}
+.ch-read{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-top:14px;padding:10px 20px;border:1px solid var(--gold);border-radius:3px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);background:transparent;transition:background 0.3s ease,color 0.3s ease}
+.ch-read::after{content:"→";font-size:13px}
+.ch-read:hover{background:var(--gold);color:var(--obsidian)}
 .card.is-soon{cursor:default}
 .card.is-soon .ch-cover img{opacity:0.5;filter:grayscale(0.2)}
 .ch-soon{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.8vw,21px);font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--pearl);padding:12px 26px;white-space:nowrap;text-align:center;background:rgba(8,6,8,0.55);border:1px solid rgba(197,165,90,0.55);border-radius:2px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
@@ -126,7 +129,7 @@ a:hover{color:var(--gold-soft)}
 }
 
 /* ============ ДЕРЕВО СВЯЗЕЙ (relations tree) ============ */
-.tree-embed{--tgold:#C5A55A;--tgold-soft:#e6c878;--tpearl:#e6ddc9;--tpearl-mute:#8b8578;padding:0 clamp(16px,3vw,40px)}
+.tree-embed{--tgold:#C5A55A;--tgold-soft:#e6c878;--tpearl:#e6ddc9;--tpearl-mute:#8b8578;padding:0 clamp(16px,3vw,40px);display:flex;flex-direction:column;gap:clamp(26px,3.4vw,44px)}
 .tree-frame{position:relative;width:100%;max-width:1600px;margin:0 auto;aspect-ratio:1780/1300;overflow:hidden}
 .tree-stage{position:absolute;top:0;left:0;width:1780px;height:1200px;transform-origin:top left}
 .tree-embed svg.tree-threads{position:absolute;inset:0;overflow:visible;pointer-events:none}
@@ -153,10 +156,50 @@ a:hover{color:var(--gold-soft)}
 .tree-embed .t-node.center::before{content:"";position:absolute;inset:-26%;border-radius:50%;z-index:-1;pointer-events:none;background:radial-gradient(circle,rgba(197,165,90,0.22) 0%,rgba(197,165,90,0) 68%)}
 .tree-embed .t-node.center .nm{font-size:31px;letter-spacing:0.16em;color:var(--tgold)}
 .tree-embed .t-node.hub .disc{border-color:rgba(197,165,90,0.5)}
+.tree-embed .t-node.is-sel .disc{border-color:var(--tgold);box-shadow:0 14px 40px rgba(0,0,0,0.6),0 0 34px rgba(197,165,90,0.38);transform:translateY(-2px)}
+.tree-embed .t-node.is-sel .nm{color:var(--tgold-soft)}
+.tree-embed .t-node.is-sel .role{opacity:1}
+.tree-embed .tree-sel-line{stroke:var(--tgold-soft);stroke-width:2.6;fill:none;opacity:0;stroke-linecap:round;filter:drop-shadow(0 0 7px rgba(197,165,90,0.65));transition:opacity .4s ease}
+.tree-embed .tree-sel-line.on{opacity:.95}
+.tree-stage.paired .edge{opacity:0;transition:opacity .35s ease}
+.tree-hint{order:-1;text-align:center;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(20px,2.6vw,30px);color:var(--pearl-dim);margin:0}
+.tree-panel{position:absolute;left:0;top:0;transform:translate(-50%,-50%);width:min(430px,82vw);padding:18px 22px 20px;border:1px solid rgba(197,165,90,0.32);border-radius:3px;background:rgba(9,7,12,0.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);text-align:center;opacity:0;pointer-events:none;transition:opacity .3s ease;z-index:30;box-shadow:0 22px 55px rgba(0,0,0,0.65)}
+.tree-panel.float-on{opacity:1}
+.tp-chips{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:14px;min-height:1px}
+.tp-chips:empty{display:none}
+.tp-chip{display:flex;flex-direction:column;align-items:center;gap:7px}
+.tp-chip-img{width:52px;height:52px;border-radius:50%;overflow:hidden;border:1px solid rgba(197,165,90,0.55);display:block;box-shadow:0 6px 16px rgba(0,0,0,0.5)}
+.tp-chip-img img{width:100%;height:100%;object-fit:cover;display:block}
+.tp-chip-nm{font-family:'Cinzel',serif;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--tpearl)}
+.tp-x{font-family:'Cinzel',serif;color:var(--tgold);font-size:18px;opacity:.65;align-self:center;margin-top:-16px}
+.tp-context{font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--tgold);margin-bottom:11px}
+.tp-quote{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:clamp(17px,2vw,21px);line-height:1.4;color:var(--tpearl);text-wrap:pretty;transition:opacity .25s ease}
+.tp-quote.is-changing{opacity:0}
+.tp-quote b{font-style:normal;color:var(--tgold-soft);font-weight:500}
+.tp-quote .tp-sp{display:block;font-style:normal;font-family:'Cinzel',serif;font-size:0.55em;letter-spacing:0.14em;text-transform:uppercase;color:var(--tgold-soft);margin-bottom:6px}
 @media (max-width:880px){
-  .tree-embed .t-node .nm{font-size:20px}
-  .tree-embed .t-node.center .nm{font-size:24px}
-  .tree-embed .t-node .role{font-size:16px;top:calc(100% + 40px)}
+  .tree-embed .t-node .nm{font-size:27px}
+  .tree-embed .t-node.center .nm{font-size:33px}
+  .tree-embed .t-node .role{font-size:22px;width:230px;top:calc(100% + 56px)}
+}
+
+/* ============ MOBILE: rails (chapters + characters) ============ */
+@media (max-width:880px){
+  .rail-wrap{padding:0 16px}
+  .rail{gap:12px;padding-bottom:16px}
+  .card{flex:0 0 44vw;max-width:210px}
+  /* trailer buttons: no hover on touch — always visible */
+  .card[data-kind="series"] .ch-trailers{opacity:1;transform:none;pointer-events:auto}
+  .ch-trailers{gap:6px;padding:10px}
+  .ch-trailer{padding:8px 10px;font-size:11px;gap:7px}
+  .ch-trailer .ig-ic{width:15px;height:15px}
+  .ch-cap{padding-top:12px}
+  .ch-num{font-size:10px;letter-spacing:0.2em;margin-bottom:6px}
+  .ch-title{font-size:19px}
+  .ch-desc{font-size:12px}
+  .ch-soon{font-size:14px;padding:9px 18px;letter-spacing:0.16em}
+  /* character captions: no hover on touch — always visible */
+  .card[data-kind="cast"] .cast-hover{opacity:1}
 }
 
 /* ============ FOOTER (simplified) ============ */

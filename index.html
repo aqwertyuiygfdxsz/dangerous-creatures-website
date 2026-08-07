@@ -1069,7 +1069,7 @@
     <div class="series-inline" id="cast" data-screen-label="characters">
       <div class="section-head">
         <h2 class="section-title">Персонажи</h2>
-        <p class="section-sub">Каждый уже сделал свой выбор.</p>
+        <p class="section-sub">Каждый уже сделал свой выбор. Осталось узнать, кто его переживёт.</p>
       </div>
       <div class="rail-wrap">
         <div class="rail" id="castRail"></div>
@@ -1077,11 +1077,8 @@
     </div>
 
     <div class="series-inline" id="relations" data-screen-label="relations">
-      <div class="section-head">
-        <h2 class="section-title">Дерево связей</h2>
-        <p class="section-sub">Наведите на портрет, чтобы увидеть его нити.</p>
-      </div>
       <div class="tree-embed">
+        <p class="tree-hint" id="treeHint">Выберите двух героев — нажмите на портрет, затем на второй.</p>
         <div class="tree-frame" id="treeFrame">
           <div class="tree-stage" id="treeStage">
             <svg class="tree-threads" id="treeThreads">
@@ -1091,6 +1088,10 @@
               <g id="treeEdges"></g>
             </svg>
             <div id="treeNodes"></div>
+          </div>
+          <div class="tree-panel" id="treePanel">
+            <div class="tp-chips" id="tpChips"></div>
+            <p class="tp-quote" id="tpQuote"></p>
           </div>
         </div>
       </div>
@@ -1103,25 +1104,6 @@
   </div>
 </section>
 
-
-<!-- ===================== PRE-ORDER ===================== -->
-<section class="preorder-section" id="preorder">
-  <div class="preorder-inner">
-    <h2 class="preorder-title" data-i18n-html="preorder.title">Хотите приобрести<br>печатную книгу?</h2>
-    <div class="ornament preorder-ornament" aria-hidden="true">
-      <span class="rule"></span>
-      <span class="diamond"></span>
-      <span class="diamond"></span>
-      <span class="diamond"></span>
-      <span class="rule right"></span>
-    </div>
-    <p class="preorder-sub body-text" data-i18n-html="preorder.sub">Оставьте email&nbsp;— и&nbsp;вы первыми узнаете о&nbsp;выходе коллекционного издания.</p>
-    <a class="btn btn-ghost preorder-btn" href="https://forms.gle/8o8okumvPJW8QKLm9" target="_blank" rel="noopener">
-      <span data-i18n="preorder.cta">Записаться</span>
-      <span class="preorder-arrow" aria-hidden="true">→</span>
-    </a>
-  </div>
-</section>
 
 <!-- ===================== FOOTER ===================== -->
 <footer>
@@ -1148,7 +1130,7 @@
       </svg>
     </a>
   </nav>
-  <div class="copyright">© 2025 Опасные Создания · Dangerous Creatures</div>
+  <div class="copyright">© 2026 Опасные Создания · Dangerous Creatures</div>
 </footer>
 
 <!-- ===================== SCRIPTS ===================== -->
