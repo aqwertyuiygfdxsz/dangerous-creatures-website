@@ -35,6 +35,11 @@ a:hover{color:var(--gold-soft)}
 .ch-read{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-top:14px;padding:10px 20px;border:1px solid var(--gold);border-radius:3px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);background:transparent;transition:background 0.3s ease,color 0.3s ease}
 .ch-read::after{content:"→";font-size:13px}
 .ch-read:hover{background:var(--gold);color:var(--obsidian)}
+.ch-cover.is-ph{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#14110d 0%,#0b0a08 100%)}
+.ch-cover-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
+.ch-ph-num{font-family:'Manrope',sans-serif;font-size:11px;font-weight:500;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold)}
+.ch-ph-rule{width:44px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.7}
+.ch-ph-soon{font-family:'Manrope',sans-serif;font-size:clamp(16px,1.8vw,21px);font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--pearl-dim)}
 .card.is-soon{cursor:default}
 .card.is-soon .ch-cover img{opacity:0.5;filter:grayscale(0.2)}
 .ch-soon{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);font-family:'Manrope',sans-serif;font-size:clamp(16px,1.8vw,21px);font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--pearl);padding:12px 26px;white-space:nowrap;text-align:center;background:rgba(8,6,8,0.55);border:1px solid rgba(197,165,90,0.55);border-radius:2px;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}

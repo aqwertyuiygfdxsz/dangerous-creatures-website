@@ -8,8 +8,9 @@ var SERIES = [
   {num:'03',poster:'assets/cov_3.png',ru:'Пепел Обещаний',en:'Ashes of Promises',chapterHref:'read.html#ch3',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Dao44UGO8H6/'}]},
   {num:'04',poster:'assets/cov_4.png',ru:'Тропа Мертвецов',en:'Path of the Dead',chapterHref:'read.html#ch4',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Da7NDN1hlb6/'}]},
   {num:'05',poster:'assets/cov_5.png',ru:'Эхо Воспоминаний',en:'Echo of Memories',chapterHref:'read.html#ch5',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/DbKjiY_hXpv/'}]},
-  {num:'06',poster:'assets/cov_6.png',ru:'Скованные Навью',en:'Bound by the Nav',chapterHref:'read.html#ch6'},
-  {num:'07',poster:'assets/cov_7.png',ru:'Молвь или Дело',en:'Coming soon',chapterHref:'read.html',soon:true}
+  {num:'06',poster:'assets/cov_6.png',ru:'Скованные Навью',en:'Bound by the Nav',chapterHref:'read.html#ch6',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/p/DbuwZd7B54d/'}]},
+  {num:'07',poster:'assets/cov_7.png',ru:'Молвь или Подвиг',en:'Word or Deed',chapterHref:'read.html#ch7'},
+  {num:'08',ru:'Скоро',en:'Coming soon',chapterHref:'read.html',soon:true}
 ];
 
 /* ---------------- Персонажи (по фракциям) ---------------- */
@@ -59,10 +60,13 @@ function trailerBtns(s){
 
 function seriesCardHtml(s){
   var n = s.num.replace(/^0/,'');
+  var cover = s.poster
+    ? '<a class="ch-cover-link" href="'+s.chapterHref+'" aria-label="Глава '+n+'. '+s.ru+'"><img src="'+s.poster+'" alt="" loading="lazy"></a>'
+    : '<div class="ch-cover-ph"><span class="ch-ph-num">Глава '+s.num+'</span><span class="ch-ph-rule"></span><span class="ch-ph-soon">Скоро</span></div>';
   return '<div class="card'+(s.soon?' is-soon':'')+'" data-kind="series">'
-    +'<div class="ch-cover">'
-    +'<a class="ch-cover-link" href="'+s.chapterHref+'" aria-label="Глава '+n+'. '+s.ru+'"><img src="'+s.poster+'" alt="" loading="lazy"></a>'
-    +(s.soon?'<span class="ch-soon">Скоро</span>':'')
+    +'<div class="ch-cover'+(s.poster?'':' is-ph')+'">'
+    +cover
+    +(s.soon&&s.poster?'<span class="ch-soon">Скоро</span>':'')
     +trailerBtns(s)
     +'</div>'
     +'<a class="ch-cap" href="'+s.chapterHref+'">'
@@ -154,7 +158,8 @@ function initTree(){
     { id:'morva',  name:'Морва',  role:'мать Ровенны',     img:C+'morva-c.png', r:52, x:1170, y:150,  mx:200, my:1440 },
     { id:'esmar',  name:'Эсмар',  role:'жена Азарина',     img:C+'esmar.jpg',   r:52, x:1650, y:290,  mx:145, my:1760 },
     { id:'valran', name:'Валран', role:'отец Азарина',     img:C+'valran-c.jpg',r:52, x:1650, y:650,  mx:615, my:1760 },
-    { id:'harn',   name:'Харн',   role:'командующий флота Горваринов',img:C+'harn.jpg',    r:52, x:1420, y:880,  mx:380, my:2270 }
+    { id:'harn',   name:'Харн',   role:'командующий флота Горваринов',img:C+'harn.jpg',    r:52, x:1420, y:880,  mx:380, my:2270 },
+    { id:'asvald', name:'Асвальд',role:'Воевластный Цитадели',img:C+'asvald.png', r:58, cls:'hub', x:1120, y:1060, mx:600, my:560 }
   ];
   var EDGES = [
     ['ray','loran','spine'], ['loran','azarin','spine'],
@@ -162,7 +167,8 @@ function initTree(){
     ['mark','comander'], ['krinya','comander'], ['yurt','comander'],
     ['mark','krinya'], ['krinya','yurt'], ['mark','yurt'],
     ['loran','rovenna'], ['loran','garon'], ['rovenna','morva'],
-    ['azarin','esmar'], ['azarin','valran'], ['azarin','harn']
+    ['azarin','esmar'], ['azarin','valran'], ['azarin','harn'],
+    ['asvald','garon'], ['asvald','comander'], ['asvald','azarin']
   ];
   var BUST = '<span class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1"><circle cx="12" cy="9" r="4"/><path d="M5 20c0-4.5 3-6.6 7-6.6s7 2.1 7 6.6"/></svg></span>';
 
@@ -171,19 +177,19 @@ function initTree(){
 
   /* first-dialogue quotes for character pairs */
   var REL_RAW = [
-    ['loran','ray','Свадебный день · Торнхолл','Лоран','Ты красивая. Такой лоб высокий'],
+    ['loran','ray','','Рэй','Мой отец принимал решения сам.'],
     ['mark','ray','Первая совместная дорога','Рэй','Королём себя возомнил?! Я впереди, ты — на шаг позади.'],
     ['morva','ray','Первая встреча','Морва','Твоему отцу повезло сбыть такую прореху в чужую казну.'],
     ['ray','rovenna','Спор о законах Севера','Рэй','Ваша трактовка собственных законов восхищает.'],
     ['krinya','ray','В покоях Рэй','Криня','Ну и покои у вас! В таких и умереть не жаль.'],
     ['krinya','mark','Одна из первых перепалок','Марк','Опять волчьих ягод нажрался? Мавки не говорят.'],
-    ['comander','mark','Разговор с командиром','Командир','Ты ценный, но не незаменимый.'],
+    ['comander','mark','','Командир','Задание для тебя. Кривороту ни слова.'],
     ['azarin','esmar','После спасения в море','Азарин','Мне не нужен выкуп. Я хочу сделать тебя своей королевой.'],
     ['garon','ray','Первая встреча','Рэй подумала','Слишком любезен. Значит, что-то скрывает.'],
     ['comander','rovenna','Первая встреча','Ровенна','Урману я доверяю больше.'],
     ['morva','rovenna','После приезда Рэй','Морва','Отошли её отцу, пока беда не случилась.'],
     ['loran','morva','','Морва','В следующий раз тебя разбудит не сапог Гарона, а нож Горваринов в боку.'],
-    ['loran','rovenna','','Лоран','Вы уже достаточно насоветовали. Это мое решение.'],
+    ['loran','rovenna','','Ровенна','Рэй тебе не из-за красоты дали. Она наш ключ к безопасному югу.'],
     ['loran','harn','','Харн','Мы получим свое. А иначе Азарин заберет твой трон.'],
     ['garon','harn','','Харн','Старый язык, контроль над проливом и полная автономия.'],
     ['garon','morva','Разговор при дворе','Морва','Если я спрошу тебя, ты услышишь советника или Гарона?'],
@@ -196,7 +202,20 @@ function initTree(){
     ['ray','tata','До отъезда на Север','Тата','Я тут такое узнала!'],
     ['mark','yurt','','Юрт','Тоже мне работа — стену подпирать. Сейчас бы кубок вина да девку покрепче…'],
     ['comander','yurt','','Юрт','Погоди, командир, мы так не договаривались.'],
-    ['krinya','yurt','','Криня','Да чё ты, Юрт? Разнылся, как бабка старая.']
+    ['krinya','yurt','','Юрт','Навь — она как слоёный пирог. А лёд и буран Нави, по-твоему, из овса сотканы?'],
+    ['ray','yurt','','Юрт','А на самом дне, сказывают, сами боги обитают…'],
+    ['garon','mark','','Гарон','Впредь докладывай мне обо всём.'],
+    ['loran','mark','','Лоран','Вы бы объяснили своей госпоже вашу природу. Или нарочно это скрываете?'],
+    ['krinya','loran','','Криня','Ещё кони дохнут только в путь. Твари менее живучие, чем мы.'],
+    ['mark','tata','','Тата','В город ушли. Нам с тобой велено их прикрывать.'],
+    ['krinya','tata','','Криня','В следующий раз я тебя лично на фестиваль свожу.'],
+    ['loran','yurt','','Юрт','Как в первый раз видите? Я тут уже две недели околачиваюсь.'],
+    ['asvald','comander','','Асвальд','Всё, свободен, Навья морда.'],
+    ['garon','asvald','','Гарон','Надеюсь, мы договорились.'],
+    ['asvald','azarin','','Асвальд','В память о нашей дружбе.'],
+    ['rivald','rovenna','','Ривальд','Как так получилось, что на троне рядом с королём сидит его мать, а не жена?'],
+    ['garon','rivald','','Ривальд','Выйди, я говорю с дочерью.'],
+    ['loran','rivald','','Ривальд','Ты недоразумение, а не король.']
   ];
   function keyFor(a,b){ return [a,b].slice().sort().join('|'); }
   var REL={}; REL_RAW.forEach(function(r){ REL[keyFor(r[0],r[1])]={context:r[2],speaker:r[3],quote:r[4]}; });
