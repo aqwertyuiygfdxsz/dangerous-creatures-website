@@ -14,36 +14,36 @@ var SERIES = [
 ];
 
 /* ---------------- Персонажи (по фракциям) ---------------- */
-var CHARS_HREF = 'universe.html#characters';
+var CHARS_HREF = 'universe-en.html#characters';
 var LOOKS = {
   south:[
-    {name:'Rey',     role:'princess', poster:'assets/chars/ray.jpg',    href:CHARS_HREF}
+    {name:'Rey',     role:'princess', poster:'assets/chars/ray.png',    href:CHARS_HREF}
   ],
   north:[
-    {name:'Loran',   role:'king of the North', poster:'assets/chars/loran.jpg',   href:CHARS_HREF},
-    {name:'Rovenna', role:'queen',         poster:'assets/chars/rovenna.jpg', href:CHARS_HREF},
+    {name:'Loran',   role:'king of the North', poster:'assets/chars/loran.png',   href:CHARS_HREF},
+    {name:'Rovenna', role:'queen',         poster:'assets/chars/rovenna.png', href:CHARS_HREF},
     {name:'Garon',   role:'king’s advisor',  poster:'assets/chars/garon.jpg',   href:CHARS_HREF},
-    {name:'Morva',   role:'Rovenna’s mother',     poster:'assets/chars/morva.jpg',   href:CHARS_HREF}
+    {name:'Morva',   role:'Rovenna’s mother',     poster:'assets/chars/morva.png',   href:CHARS_HREF}
   ],
   reapers:[
     {name:'Commander', role:'head of the reapers',    poster:'assets/chars/comander.jpg', href:CHARS_HREF},
-    {name:'Krinya',    role:'reaper · Krivorot', poster:'assets/chars/krinya.jpg',   href:CHARS_HREF},
-    {name:'Mark',     role:'reaper · Markosh',   poster:'assets/chars/mark.jpg',     href:CHARS_HREF}
+    {name:'Krinya',    role:'reaper · Krivorot', poster:'assets/chars/krinya.png',   href:CHARS_HREF},
+    {name:'Mark',     role:'reaper · Markosh',   poster:'assets/chars/mark.png',     href:CHARS_HREF}
   ]
 };
 var FACTION_LABEL = { south:'Lovarra', north:'North', reapers:'Citadel' };
 
 /* homepage cast — fixed order, faction label, role, hover line */
 var CAST_HOME = [
-  {name:'Rey',     faction:'Lovarra', role:'princess',        poster:'assets/chars/ray.jpg',      hover:'Hunting her brother’s killers.'},
-  {name:'Tata',    faction:'Lovarra', role:'southerner, the princess’s friend', poster:'assets/chars/tata.jpg',     hover:'Knows more than she should.'},
-  {name:'Mark',     faction:'Reapers',   role:'the princess’s retinue',    poster:'assets/chars/mark.jpg',     hover:'Secretly hunts the cult inside the castle walls.'},
-  {name:'Krinya',    faction:'Reapers',   role:'the princess’s retinue',    poster:'assets/chars/krinya.jpg',   hover:'Meets danger with a joke.'},
-  {name:'Loran',   faction:'North', role:'king of the North', poster:'assets/chars/loran.jpg',   hover:'Inherited his brother’s wife and crown.'},
-  {name:'Rovenna', faction:'North', role:'queen',        poster:'assets/chars/rovenna.jpg', hover:'Will do anything for her family.'},
-  {name:'Morva',   faction:'North', role:'Rovenna’s mother',     poster:'assets/chars/morva.jpg',   hover:'Sees prophetic dreams.'},
-  {name:'Azarin',  faction:'Gorvarins', role:'lord of the Sea House', poster:'assets/chars/azarin.jpg', hover:'Believes he is the true king.'},
-  {name:'Esmar',    faction:'East',   role:'emperor’s daughter · Azarin’s wife', poster:'assets/chars/esmar.jpg', hover:'Believes in Azarin and the coming of Cassia.'}
+  {name:'Rey',     faction:'Lovarra', role:'princess',        poster:'assets/chars/ray.png',      hover:'Hunting her brother’s killers.'},
+  {name:'Tata',    faction:'Lovarra', role:'southerner, the princess’s friend', poster:'assets/chars/tata.png',     hover:'Knows more than she should.'},
+  {name:'Mark',     faction:'Reapers',   role:'the princess’s retinue',    poster:'assets/chars/mark.png',     hover:'Secretly hunts the cult inside the castle walls.'},
+  {name:'Krinya',    faction:'Reapers',   role:'the princess’s retinue',    poster:'assets/chars/krinya.png',   hover:'Meets danger with a joke.'},
+  {name:'Loran',   faction:'North', role:'king of the North', poster:'assets/chars/loran.png',   hover:'Inherited his brother’s wife and crown.'},
+  {name:'Rovenna', faction:'North', role:'queen',        poster:'assets/chars/rovenna.png', hover:'Will do anything for her family.'},
+  {name:'Morva',   faction:'North', role:'Rovenna’s mother',     poster:'assets/chars/morva.png',   hover:'Sees prophetic dreams.'},
+  {name:'Azarin',  faction:'Gorvarins', role:'lord of the Sea House', poster:'assets/chars/azarin.png', hover:'Believes he is the true king.'},
+  {name:'Esmar',    faction:'East',   role:'emperor’s daughter · Azarin’s wife', poster:'assets/chars/esmar.png', hover:'Believes in Azarin and the coming of Cassia.'}
 ];
 
 /* chapter card — vertical cover + caption below (realista episode style) */
@@ -142,21 +142,21 @@ function initTree(){
   var C = 'assets/chars/', RS = 1.34, RSM = 1.12;
   var DESK = { BW:1780, BH:1300 }, MOB = { BW:760, BH:2420 };
   var NODES = [
-    { id:'ray',    name:'Rey',    role:'princess of Lovarra', img:C+'ray-c.jpg',   r:82, cls:'center', x:430,  y:560,  mx:380, my:400 },
-    { id:'loran',  name:'Loran',  role:'king of the North', img:C+'loran-c.jpg', r:82, cls:'center', x:960,  y:500,  mx:380, my:1240 },
-    { id:'azarin', name:'Azarin', role:'head of House Gorvarin', img:C+'azarin-c.jpg', r:82, cls:'center', x:1450, y:520,  mx:380, my:1900 },
+    { id:'ray',    name:'Rey',    role:'princess of Lovarra', img:C+'ray-c.png',   r:82, cls:'center', x:430,  y:560,  mx:380, my:400 },
+    { id:'loran',  name:'Loran',  role:'king of the North', img:C+'loran-c.png', r:82, cls:'center', x:960,  y:500,  mx:380, my:1240 },
+    { id:'azarin', name:'Azarin', role:'head of House Gorvarin', img:C+'azarin-c.png', r:82, cls:'center', x:1450, y:520,  mx:380, my:1900 },
     { id:'rivald', name:'Rivald',role:'king of Lovarra',   img:C+'rivald.jpg',  r:52, x:300,  y:110,  mx:230, my:120 },
     { id:'daylan', name:'Daylan', role:'Rey’s brother',         img:C+'daylan.jpg',  r:52, x:560,  y:250,  mx:530, my:120 },
-    { id:'tata',   name:'Tata',   role:'maid',         img:C+'tata-c.jpg',  r:52, x:170,  y:340,  mx:175, my:380 },
+    { id:'tata',   name:'Tata',   role:'maid',         img:C+'tata-c.png',  r:52, x:170,  y:340,  mx:175, my:380 },
     { id:'marla',  name:'Marla',  role:'maid',         img:C+'marla.jpg',   r:52, x:150,  y:600,  mx:175, my:620 },
-    { id:'mark',   name:'Mark',   role:'reaper',             img:C+'mark.jpg',    r:52, x:360,  y:860,  mx:340, my:680 },
-    { id:'krinya', name:'Krinya',  role:'reaper',             img:C+'krinya-c.jpg',r:52, x:640,  y:860,  mx:525, my:660 },
+    { id:'mark',   name:'Mark',   role:'reaper',             img:C+'mark-c.png',    r:52, x:360,  y:860,  mx:340, my:680 },
+    { id:'krinya', name:'Krinya',  role:'reaper',             img:C+'krinya-c.png',r:52, x:640,  y:860,  mx:525, my:660 },
     { id:'yurt',   name:'Yurt',    role:'reaper',             img:C+'yurt.jpg',    r:52, x:920,  y:860,  mx:600, my:370 },
     { id:'comander',name:'Urman',role:'commander of the reapers',   img:C+'comander.jpg',r:60, cls:'hub', x:640, y:1160, mx:380, my:900 },
     { id:'rovenna',name:'Rovenna',role:'Loran’s mother', img:C+'rovenna-c.png', r:52, x:960,  y:220,  mx:195, my:1140 },
     { id:'garon',  name:'Garon',  role:'advisor and the king’s uncle', img:C+'garon-c.jpg', r:52, x:1160, y:720,  mx:565, my:1160 },
     { id:'morva',  name:'Morva',  role:'Rovenna’s mother',     img:C+'morva-c.png', r:52, x:1170, y:150,  mx:200, my:1440 },
-    { id:'esmar',  name:'Esmar',  role:'Azarin’s wife',     img:C+'esmar.jpg',   r:52, x:1650, y:290,  mx:145, my:1760 },
+    { id:'esmar',  name:'Esmar',  role:'Azarin’s wife',     img:C+'esmar-c.png',   r:52, x:1650, y:290,  mx:145, my:1760 },
     { id:'valran', name:'Valran', role:'Azarin’s father',     img:C+'valran-c.jpg',r:52, x:1650, y:650,  mx:615, my:1760 },
     { id:'harn',   name:'Harn',   role:'commander of the Gorvarin fleet',img:C+'harn.jpg',    r:52, x:1420, y:880,  mx:380, my:2270 },
     { id:'asvald', name:'Asvald',role:'Warlord of the Citadel',img:C+'asvald.png', r:58, cls:'hub', x:1120, y:1060, mx:600, my:560 }

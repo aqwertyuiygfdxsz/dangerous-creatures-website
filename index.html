@@ -1255,8 +1255,12 @@
     try { localStorage.setItem('lang', lang); } catch(e){}
   }
 
+  // EN leaves for the dedicated English page (en.html); RU stays here.
   document.querySelectorAll('.lang button').forEach(b => {
-    b.addEventListener('click', () => setLang(b.dataset.lang));
+    b.addEventListener('click', () => {
+      if (b.dataset.lang === 'en') { try { localStorage.setItem('lang','en'); } catch(e){} window.location.href = 'en.html'; return; }
+      setLang('ru');
+    });
   });
 
   // Pre-order section — reveal text on scroll into view
@@ -1275,8 +1279,7 @@
     io.observe(section);
   })();
   try {
-    const saved = localStorage.getItem('lang');
-    if (saved && I18N[saved]) setLang(saved);
+    setLang('ru');
   } catch(e){}
 </script>
 

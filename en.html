@@ -46,11 +46,7 @@
 
   html {
     scroll-behavior: smooth;
-    /* Magnetic snap to description after hero ends. Snap only on description
-       (so within-hero scrolling stays free), proximity so it only pulls when close. */
-    scroll-snap-type: y proximity;
   }
-  .description { scroll-snap-align: start; }
 
   body {
     background: var(--obsidian);
@@ -976,6 +972,9 @@
   .notice-text{font-family:'Manrope',sans-serif;font-weight:300;font-size:clamp(15px,1.5vw,17px);line-height:1.8;color:#e6ddc9;text-wrap:pretty}
   .notice-text + .notice-text{margin-top:16px}
   .notice-btn{margin-top:clamp(28px,3.4vw,40px);font-size:13px;padding:16px 46px;letter-spacing:0.28em}
+  /* no hero on this page — leave room for the fixed header */
+  .description{padding-top:clamp(120px,14vw,180px)}
+  .description::before{top:96px}
 </style>
 <link rel="stylesheet" href="home-sections.css" />
 </head>
@@ -1008,11 +1007,12 @@
   <div class="nav-right">
     <ul class="nav-links">
       <li><a href="universe-en.html" data-i18n="nav.world">Universe</a></li>
+      <li><a href="https://forms.gle/WxWFDBT5XfQoUqjr8" target="_blank" rel="noopener">Notify me</a></li>
     </ul>
 
     <div class="lang" role="group" aria-label="Language">
-      <button data-lang="ru" class="is-active">RU</button>
-      <button data-lang="en">EN</button>
+      <button data-lang="ru">RU</button>
+      <button data-lang="en" class="is-active">EN</button>
     </div>
   </div>
 
@@ -1020,30 +1020,6 @@
     <span></span><span></span><span></span>
   </button>
 </header>
-
-<!-- ===================== HERO ===================== -->
-<section class="hero" id="top">
-  <div class="hero-pin">
-    <video class="hero-video" id="heroVideo" src="assets/v-3.mp4" poster="assets/home_3.png" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
-    <div class="hero-bg-tone"></div>
-    <div class="hero-fog"></div>
-    <div class="hero-vignette"></div>
-    <div class="hero-mobile"></div>
-    <div class="hero-mobile-tone"></div>
-
-    <div class="hero-content">
-      <div class="hero-text-block" id="heroText">
-        <div class="hero-lockup">
-          <img class="hero-title" id="heroTitleImg" src="assets/title_en.png" alt="Dangerous Creatures" />
-        </div>
-      </div>
-      <div class="hero-cta">
-        <a href="#story" class="btn hero-cta-text" data-i18n="hero.cta">Prologue</a>
-        <a href="#story" class="hero-cta-arrow" aria-label="Scroll down">↓</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ===================== DESCRIPTION ===================== -->
 <section class="description" id="story">
@@ -1168,18 +1144,6 @@
     }, { passive: true });
   })();
 
-  // -------- Hero video: autoplay + loop, section slides over it on scroll --------
-  // The hero is a sticky, full-viewport video. Subsequent sections (opaque,
-  // higher z-index) scroll up and cover it — no scroll-driven title parallax.
-  (function () {
-    const video = document.getElementById('heroVideo');
-    if (!video) return;
-    const play = () => { const pr = video.play(); if (pr && pr.catch) pr.catch(() => {}); };
-    if (video.readyState >= 2) play();
-    video.addEventListener('canplay', play);
-    video.addEventListener('loadedmetadata', play);
-  })();
-
   // -------- Burger menu --------
   (function () {
     const nav = document.getElementById('nav');
@@ -1263,8 +1227,12 @@
     try { localStorage.setItem('lang', lang); } catch(e){}
   }
 
+  // RU leaves for the Russian page; EN stays here.
   document.querySelectorAll('.lang button').forEach(b => {
-    b.addEventListener('click', () => setLang(b.dataset.lang));
+    b.addEventListener('click', () => {
+      if (b.dataset.lang === 'ru') { try { localStorage.setItem('lang','ru'); } catch(e){} window.location.href = 'index.html'; return; }
+      setLang('en');
+    });
   });
 
   // Pre-order section — reveal text on scroll into view

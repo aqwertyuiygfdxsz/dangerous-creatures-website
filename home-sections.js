@@ -17,33 +17,33 @@ var SERIES = [
 var CHARS_HREF = 'universe.html#characters';
 var LOOKS = {
   south:[
-    {name:'Рэй',     role:'принцесса', poster:'assets/chars/ray.jpg',    href:CHARS_HREF}
+    {name:'Рэй',     role:'принцесса', poster:'assets/chars/ray.png',    href:CHARS_HREF}
   ],
   north:[
-    {name:'Лоран',   role:'король Севера', poster:'assets/chars/loran.jpg',   href:CHARS_HREF},
-    {name:'Ровенна', role:'королева',         poster:'assets/chars/rovenna.jpg', href:CHARS_HREF},
+    {name:'Лоран',   role:'король Севера', poster:'assets/chars/loran.png',   href:CHARS_HREF},
+    {name:'Ровенна', role:'королева',         poster:'assets/chars/rovenna.png', href:CHARS_HREF},
     {name:'Гарон',   role:'советник короля',  poster:'assets/chars/garon.jpg',   href:CHARS_HREF},
-    {name:'Морва',   role:'мать Ровенны',     poster:'assets/chars/morva.jpg',   href:CHARS_HREF}
+    {name:'Морва',   role:'мать Ровенны',     poster:'assets/chars/morva.png',   href:CHARS_HREF}
   ],
   reapers:[
     {name:'Командир', role:'глава жнецов',    poster:'assets/chars/comander.jpg', href:CHARS_HREF},
-    {name:'Криня',    role:'жнец · Криворот', poster:'assets/chars/krinya.jpg',   href:CHARS_HREF},
-    {name:'Марк',     role:'жнец · Маркош',   poster:'assets/chars/mark.jpg',     href:CHARS_HREF}
+    {name:'Криня',    role:'жнец · Криворот', poster:'assets/chars/krinya.png',   href:CHARS_HREF},
+    {name:'Марк',     role:'жнец · Маркош',   poster:'assets/chars/mark.png',     href:CHARS_HREF}
   ]
 };
 var FACTION_LABEL = { south:'Ловарра', north:'Север', reapers:'Цитадель' };
 
 /* homepage cast — fixed order, faction label, role, hover line */
 var CAST_HOME = [
-  {name:'Рэй',     faction:'Ловарра', role:'принцесса',        poster:'assets/chars/ray.jpg',      hover:'Ищет убийц брата.'},
-  {name:'Тата',    faction:'Ловарра', role:'южанка, подруга принцессы', poster:'assets/chars/tata.jpg',     hover:'Знает больше, чем следует.'},
-  {name:'Марк',     faction:'Жнецы',   role:'свита принцессы',    poster:'assets/chars/mark.jpg',     hover:'Тайно ищет культ в стенах замка.'},
-  {name:'Криня',    faction:'Жнецы',   role:'свита принцессы',    poster:'assets/chars/krinya.jpg',   hover:'Встречает опасность шуткой.'},
-  {name:'Лоран',   faction:'Север', role:'король Севера', poster:'assets/chars/loran.jpg',   hover:'Унаследовал жену и корону брата.'},
-  {name:'Ровенна', faction:'Север', role:'королева',        poster:'assets/chars/rovenna.jpg', hover:'Готова на всё ради семьи.'},
-  {name:'Морва',   faction:'Север', role:'мать Ровенны',     poster:'assets/chars/morva.jpg',   hover:'Видит вещие сны.'},
-  {name:'Азарин',  faction:'Горварины', role:'державец Морского Дома', poster:'assets/chars/azarin.jpg', hover:'Верит, что он — истинный король.'},
-  {name:'Эсмар',    faction:'Восток',   role:'дочь императора · жена Азарина', poster:'assets/chars/esmar.jpg', hover:'Верит в Азарина и приход Кассии.'}
+  {name:'Рэй',     faction:'Ловарра', role:'принцесса',        poster:'assets/chars/ray.png',      hover:'Ищет убийц брата.'},
+  {name:'Тата',    faction:'Ловарра', role:'южанка, подруга принцессы', poster:'assets/chars/tata.png',     hover:'Знает больше, чем следует.'},
+  {name:'Марк',     faction:'Жнецы',   role:'свита принцессы',    poster:'assets/chars/mark.png',     hover:'Тайно ищет культ в стенах замка.'},
+  {name:'Криня',    faction:'Жнецы',   role:'свита принцессы',    poster:'assets/chars/krinya.png',   hover:'Встречает опасность шуткой.'},
+  {name:'Лоран',   faction:'Север', role:'король Севера', poster:'assets/chars/loran.png',   hover:'Унаследовал жену и корону брата.'},
+  {name:'Ровенна', faction:'Север', role:'королева',        poster:'assets/chars/rovenna.png', hover:'Готова на всё ради семьи.'},
+  {name:'Морва',   faction:'Север', role:'мать Ровенны',     poster:'assets/chars/morva.png',   hover:'Видит вещие сны.'},
+  {name:'Азарин',  faction:'Горварины', role:'державец Морского Дома', poster:'assets/chars/azarin.png', hover:'Верит, что он — истинный король.'},
+  {name:'Эсмар',    faction:'Восток',   role:'дочь императора · жена Азарина', poster:'assets/chars/esmar.png', hover:'Верит в Азарина и приход Кассии.'}
 ];
 
 /* chapter card — vertical cover + caption below (realista episode style) */
@@ -142,21 +142,21 @@ function initTree(){
   var C = 'assets/chars/', RS = 1.34, RSM = 1.12;
   var DESK = { BW:1780, BH:1300 }, MOB = { BW:760, BH:2420 };
   var NODES = [
-    { id:'ray',    name:'Рэй',    role:'принцесса Ловарры', img:C+'ray-c.jpg',   r:82, cls:'center', x:430,  y:560,  mx:380, my:400 },
-    { id:'loran',  name:'Лоран',  role:'король севера', img:C+'loran-c.jpg', r:82, cls:'center', x:960,  y:500,  mx:380, my:1240 },
-    { id:'azarin', name:'Азарин', role:'глава дома Горваринов', img:C+'azarin-c.jpg', r:82, cls:'center', x:1450, y:520,  mx:380, my:1900 },
+    { id:'ray',    name:'Рэй',    role:'принцесса Ловарры', img:C+'ray-c.png',   r:82, cls:'center', x:430,  y:560,  mx:380, my:400 },
+    { id:'loran',  name:'Лоран',  role:'король севера', img:C+'loran-c.png', r:82, cls:'center', x:960,  y:500,  mx:380, my:1240 },
+    { id:'azarin', name:'Азарин', role:'глава дома Горваринов', img:C+'azarin-c.png', r:82, cls:'center', x:1450, y:520,  mx:380, my:1900 },
     { id:'rivald', name:'Ривальд',role:'король Ловарры',   img:C+'rivald.jpg',  r:52, x:300,  y:110,  mx:230, my:120 },
     { id:'daylan', name:'Дэйлан', role:'брат Рэй',         img:C+'daylan.jpg',  r:52, x:560,  y:250,  mx:530, my:120 },
-    { id:'tata',   name:'Тата',   role:'служанка',         img:C+'tata-c.jpg',  r:52, x:170,  y:340,  mx:175, my:380 },
+    { id:'tata',   name:'Тата',   role:'служанка',         img:C+'tata-c.png',  r:52, x:170,  y:340,  mx:175, my:380 },
     { id:'marla',  name:'Марла',  role:'служанка',         img:C+'marla.jpg',   r:52, x:150,  y:600,  mx:175, my:620 },
-    { id:'mark',   name:'Марк',   role:'жнец',             img:C+'mark.jpg',    r:52, x:360,  y:860,  mx:340, my:680 },
-    { id:'krinya', name:'Криня',  role:'жнец',             img:C+'krinya-c.jpg',r:52, x:640,  y:860,  mx:525, my:660 },
+    { id:'mark',   name:'Марк',   role:'жнец',             img:C+'mark-c.png',    r:52, x:360,  y:860,  mx:340, my:680 },
+    { id:'krinya', name:'Криня',  role:'жнец',             img:C+'krinya-c.png',r:52, x:640,  y:860,  mx:525, my:660 },
     { id:'yurt',   name:'Юрт',    role:'жнец',             img:C+'yurt.jpg',    r:52, x:920,  y:860,  mx:600, my:370 },
     { id:'comander',name:'Урман',role:'командир жнецов',   img:C+'comander.jpg',r:60, cls:'hub', x:640, y:1160, mx:380, my:900 },
     { id:'rovenna',name:'Ровенна',role:'мать Лорана', img:C+'rovenna-c.png', r:52, x:960,  y:220,  mx:195, my:1140 },
     { id:'garon',  name:'Гарон',  role:'советник и дядя короля', img:C+'garon-c.jpg', r:52, x:1160, y:720,  mx:565, my:1160 },
     { id:'morva',  name:'Морва',  role:'мать Ровенны',     img:C+'morva-c.png', r:52, x:1170, y:150,  mx:200, my:1440 },
-    { id:'esmar',  name:'Эсмар',  role:'жена Азарина',     img:C+'esmar.jpg',   r:52, x:1650, y:290,  mx:145, my:1760 },
+    { id:'esmar',  name:'Эсмар',  role:'жена Азарина',     img:C+'esmar-c.png',   r:52, x:1650, y:290,  mx:145, my:1760 },
     { id:'valran', name:'Валран', role:'отец Азарина',     img:C+'valran-c.jpg',r:52, x:1650, y:650,  mx:615, my:1760 },
     { id:'harn',   name:'Харн',   role:'командующий флота Горваринов',img:C+'harn.jpg',    r:52, x:1420, y:880,  mx:380, my:2270 },
     { id:'asvald', name:'Асвальд',role:'Воевластный Цитадели',img:C+'asvald.png', r:58, cls:'hub', x:1120, y:1060, mx:600, my:560 }
