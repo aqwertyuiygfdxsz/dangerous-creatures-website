@@ -3,14 +3,14 @@
 
 /* ---------------- Главы (chapter covers) ---------------- */
 var SERIES = [
-  {num:'01',poster:'assets/cov_1.png',ru:'Погребальный Звон',en:'The Death Knell',chapterHref:'read.html#ch1',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/DUMLaL-jmFT/'}]},
-  {num:'02',poster:'assets/cov_2.png',ru:'Лунный Цвет',en:'Moon Flower',chapterHref:'read.html#ch2',trailers:[{label:'Трейлер · Часть 1 (Лана)',url:'https://www.instagram.com/reel/DWI4vEZDh1Q/'},{label:'Трейлер · Часть 2 (Рэй)',url:'https://www.instagram.com/reel/DZ2d_60u0l1/'}]},
-  {num:'03',poster:'assets/cov_3.png',ru:'Пепел Обещаний',en:'Ashes of Promises',chapterHref:'read.html#ch3',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Dao44UGO8H6/'}]},
-  {num:'04',poster:'assets/cov_4.png',ru:'Тропа Мертвецов',en:'Path of the Dead',chapterHref:'read.html#ch4',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Da7NDN1hlb6/'}]},
-  {num:'05',poster:'assets/cov_5.png',ru:'Эхо Воспоминаний',en:'Echo of Memories',chapterHref:'read.html#ch5',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/DbKjiY_hXpv/'}]},
-  {num:'06',poster:'assets/cov_6.png',ru:'Скованные Навью',en:'Bound by the Nav',chapterHref:'read.html#ch6',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/p/DbuwZd7B54d/'}]},
-  {num:'07',poster:'assets/cov_7.png',ru:'Молвь или Подвиг',en:'Word or Deed',chapterHref:'read.html#ch7'},
-  {num:'08',ru:'Скоро',en:'Coming soon',chapterHref:'read.html',soon:true}
+  {num:'01',poster:'assets/cov_1.png',ru:'Погребальный Звон',en:'The Death Knell',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/DUMLaL-jmFT/'}]},
+  {num:'02',poster:'assets/cov_2.png',ru:'Лунный Цвет',en:'Moon Flower',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер · Часть 1 (Лана)',url:'https://www.instagram.com/reel/DWI4vEZDh1Q/'},{label:'Трейлер · Часть 2 (Рэй)',url:'https://www.instagram.com/reel/DZ2d_60u0l1/'}]},
+  {num:'03',poster:'assets/cov_3.png',ru:'Пепел Обещаний',en:'Ashes of Promises',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Dao44UGO8H6/'}]},
+  {num:'04',poster:'assets/cov_4.png',ru:'Тропа Мертвецов',en:'Path of the Dead',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/Da7NDN1hlb6/'}]},
+  {num:'05',poster:'assets/cov_5.png',ru:'Эхо Воспоминаний',en:'Echo of Memories',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/reel/DbKjiY_hXpv/'}]},
+  {num:'06',poster:'assets/cov_6.png',ru:'Скованные Навью',en:'Bound by the Nav',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',trailers:[{label:'Трейлер главы',url:'https://www.instagram.com/p/DbuwZd7B54d/'}]},
+  {num:'07',poster:'assets/cov_7.png',ru:'Молвь или Подвиг',en:'Word or Deed',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701'},
+  {num:'08',ru:'Скоро',en:'Coming soon',chapterHref:'https://litnet.com/ru/book/opasnye-sozdaniya-kniga-1-svadebnyi-rekviem-b633701',soon:true}
 ];
 
 /* ---------------- Персонажи (по фракциям) ---------------- */
@@ -51,7 +51,7 @@ function trailerBtns(s){
   if(s.soon) return '';
   var IG='<svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>';
   var BK='<svg class="ig-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 6.5C10.5 5 8 4.5 4.5 5v13c3.5-.5 6 0 7.5 1.5"/><path d="M12 6.5C13.5 5 16 4.5 19.5 5v13c-3.5-.5-6 0-7.5 1.5"/></svg>';
-  var read='<a class="ch-trailer ch-trailer-read" href="'+s.chapterHref+'">'+BK+'<span>Читать главу</span></a>';
+  var read='<a class="ch-trailer ch-trailer-read" href="'+s.chapterHref+'" target="_blank" rel="noopener">'+BK+'<span>Читать главу</span></a>';
   var trailers=(s.trailers||[]).map(function(t){
     return '<a class="ch-trailer" href="'+t.url+'" target="_blank" rel="noopener" aria-label="'+t.label+'">'+IG+'<span>'+t.label+'</span></a>';
   }).join('');
@@ -61,7 +61,7 @@ function trailerBtns(s){
 function seriesCardHtml(s){
   var n = s.num.replace(/^0/,'');
   var cover = s.poster
-    ? '<a class="ch-cover-link" href="'+s.chapterHref+'" aria-label="Глава '+n+'. '+s.ru+'"><img src="'+s.poster+'" alt="" loading="lazy"></a>'
+    ? '<a class="ch-cover-link" href="'+s.chapterHref+'" target="_blank" rel="noopener" aria-label="Глава '+n+'. '+s.ru+'"><img src="'+s.poster+'" alt="" loading="lazy"></a>'
     : '<div class="ch-cover-ph"><span class="ch-ph-num">Глава '+s.num+'</span><span class="ch-ph-rule"></span><span class="ch-ph-soon">Скоро</span></div>';
   return '<div class="card'+(s.soon?' is-soon':'')+'" data-kind="series">'
     +'<div class="ch-cover'+(s.poster?'':' is-ph')+'">'
@@ -69,7 +69,7 @@ function seriesCardHtml(s){
     +(s.soon&&s.poster?'<span class="ch-soon">Скоро</span>':'')
     +trailerBtns(s)
     +'</div>'
-    +'<a class="ch-cap" href="'+s.chapterHref+'">'
+    +'<a class="ch-cap" href="'+s.chapterHref+'" target="_blank" rel="noopener">'
     +'<span class="ch-num">Глава '+s.num+'</span>'
     +'<h3 class="ch-title">'+s.ru+'</h3>'
     +(s.soon?'':'<p class="ch-desc">'+s.en+'</p>')
